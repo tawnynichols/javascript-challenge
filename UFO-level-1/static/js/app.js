@@ -43,16 +43,9 @@ function runEnter() {
     // Get the value property of the input element or use wildcard if blank
     var inputValueDate = inputDate.property('value');
 
-
-    // Log event for error handling
-    console.log(inputValueDate);
-
     // filter data based on elements
 
     var filteredData = tableData.filter(Element => (Element.datetime === inputValueDate)); //Filter just on one element
-
-    // Log event for error handling
-    console.log(filteredData);
 
     // If there is no type selected, return all objects:
     if (inputValueDate === '') {

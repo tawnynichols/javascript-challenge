@@ -55,14 +55,29 @@ function runEnter() {
     // var inputValueDate = inputDate.property("value");
     // var inputValueDate = inputValueDate.replace("","1/1/2010")
 
-    // if (inputCity.length > 0) {
-    //     var inputValueCity = inputCity.property("value");
-    // } else {
+    var filteredData = tableData
+
+    if (inputCity.length > 0) {
+        var inputValueDate = inputDate.property("value");
+        var filteredData = filtered.filter(Element => (Element.datetime === inputValueDate))
+        filtered.push(filteredData)
+
+    }
+
+
+    var filteredArray = filteredData.filter(el => {
+        return el.type == filterConditionType && el.colors.some(e => {
+            return filterConditionColors.some(ele => ele == e);
+        });
+    });
+
+
+    // else {
     //     var inputValueCity = wildcard;
     // }
 
-    // // var inputValueCity = inputCity.property("value");
-    // // var inputValueCity = inputValueCity.replace("","el cajon") 
+    // var inputValueCity = inputCity.property("value");
+    // var inputValueCity = inputValueCity.replace("","el cajon") 
 
     // if (inputState === '') {
     //     var inputValueState = wildcard;
@@ -89,9 +104,10 @@ function runEnter() {
     console.log(inputValueState);
     console.log(inputValueCountry);
     console.log(inputValueShape);
+    console.log(filtered);
 
     // filter data based on elements
-    var filteredData = tableData.filter(Element => (Element.datetime === inputValueDate) || (Element.city === inputValueCity) || (Element.state === inputValueState) || (Element.country === inputValueCountry) || (Element.shape === inputValueShape));
+    // var filteredData = filtered.filter(Element => (Element.datetime === inputValueDate) || (Element.city === inputValueCity) || (Element.state === inputValueState) || (Element.country === inputValueCountry) || (Element.shape === inputValueShape));
 
     // var filteredData = tableData.filter(Element => (Element.datetime === inputValueDate)); //Filter just on one element
 

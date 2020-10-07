@@ -57,13 +57,31 @@ function runEnter() {
 
     var filtered = tableData
 
+    var filteredCondidtions = []
+
     if (inputValueDate.length > 0) {
-        var filteredData = filtered.filter(Element => (Element.datetime === inputValueDate))
-            //filtered.push(filteredData)
+        filteredCondidtions.push({ "datetime": inputValueDate })
     } else if (inputValueCity.length > 0) {
-        var filteredData = filtered.filter(Element => (Element.city === inputValueCity))
-            //filtered.push(filteredData)
+        filteredCondidtions.push({ "city": inputValueCity })
     }
+    //console.log(filteredCondidtions)
+
+    for (x in filteredCondidtions) {
+        var filteredData = filtered.filter(Element => (Element.datetime === [x].values))
+        console.log(filteredCondidtions)
+    }
+
+
+
+    //console.log(filteredData)
+
+    // if (inputValueDate.length > 0) {
+    //     var filteredData = filtered.filter(Element => (Element.datetime === inputValueDate))
+    //         //filtered.push(filteredData)
+    // } else if (inputValueCity.length > 0) {
+    //     var filteredData = filtered.filter(Element => (Element.city === inputValueCity))
+    //         //filtered.push(filteredData)
+    // }
 
 
     // var filteredArray = filteredData.filter(el => {
@@ -115,7 +133,7 @@ function runEnter() {
     // || (Element.city === inputValueCity) || (Element.city === inputValueState) || (Element.city === inputValueCountry) || (Element.state === inputValueShape)); //filter on all elements
 
     // Log event for error handling
-    console.log(filteredData);
+    //console.log(filteredData);
 
     // Filter data on elements
     // filteredData.forEach((filteredData) => {

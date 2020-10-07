@@ -45,7 +45,7 @@ function runEnter() {
     var inputCountry = d3.select("#country");
     var inputShape = d3.select("#shape");
 
-    // Get the value property of the input element or use wildcard if blank
+    // Get the value property of the input element 
     var inputValueDate = inputDate.property('value');
     var inputValueCity = inputCity.property("value");
     var inputValueState = inputState.property("value");
@@ -55,21 +55,22 @@ function runEnter() {
     // var inputValueDate = inputDate.property("value");
     // var inputValueDate = inputValueDate.replace("","1/1/2010")
 
-    var filteredData = tableData
+    var filtered = tableData
 
-    if (inputCity.length > 0) {
-        var inputValueDate = inputDate.property("value");
+    if (inputValueDate.length > 0) {
         var filteredData = filtered.filter(Element => (Element.datetime === inputValueDate))
-        filtered.push(filteredData)
-
+            //filtered.push(filteredData)
+    } else if (inputValueCity.length > 0) {
+        var filteredData = filtered.filter(Element => (Element.city === inputValueCity))
+            //filtered.push(filteredData)
     }
 
 
-    var filteredArray = filteredData.filter(el => {
-        return el.type == filterConditionType && el.colors.some(e => {
-            return filterConditionColors.some(ele => ele == e);
-        });
-    });
+    // var filteredArray = filteredData.filter(el => {
+    //     return el.type == filterConditionType && el.colors.some(e => {
+    //         return filterConditionColors.some(ele => ele == e);
+    //     });
+    // });
 
 
     // else {
@@ -115,6 +116,15 @@ function runEnter() {
 
     // Log event for error handling
     console.log(filteredData);
+
+    // Filter data on elements
+    // filteredData.forEach((filteredData) => {
+    //     var row = tbody.append("tr");
+    //     Object.entries(filteredData).forEach(([key, value]) => {
+    //         var cell = row.append("td");
+    //         cell.text(value);
+    //     })
+    // })
 
     // If there is no type selected, return all objects:
     if (inputValueDate === '' && inputValueCity === '' && inputValueState === '' && inputValueCountry === '' && inputValueShape === '') {

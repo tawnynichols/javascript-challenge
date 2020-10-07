@@ -57,19 +57,40 @@ function runEnter() {
 
     var filtered = tableData
 
-    var filteredCondidtions = []
-
-    if (inputValueDate.length > 0) {
-        filteredCondidtions.push({ "datetime": inputValueDate })
-    } else if (inputValueCity.length > 0) {
-        filteredCondidtions.push({ "city": inputValueCity })
+    var filteredCondidtions = {
+        datetime: inputValueDate,
+        city: inputValueCity,
+        state: inputValueState,
+        country: inputValueCountry,
+        shape: inputValueShape
     }
-    //console.log(filteredCondidtions)
 
-    for (x in filteredCondidtions) {
-        var filteredData = filtered.filter(Element => (Element.datetime === [x].values))
-        console.log(filteredCondidtions)
-    }
+
+    // if (inputValueDate.length > 0) {
+    //     filteredCondidtions.push({ "datetime": inputValueDate })
+    // } else if (inputValueCity.length > 0) {
+    //     filteredCondidtions.push({ "city": inputValueCity })
+    // }
+    console.log(filteredCondidtions)
+
+    // var x = filteredCondidtions.map(({ key, value }) => `\n${key} ${value} `).join('')
+
+    // function isEmpty(o) {
+    //     let x = Object.entries(o).every(([k, v]) => v !== null);
+    //     return Object.entries(o).every(([k, v]) => v !== null);
+    // }
+
+    // if (isEmpty(filteredCondidtions)) {
+    //     console.log(x);
+    // }
+    let result = !Object.values(report).every(o => o === null);
+    console.log(result);
+
+
+    // for (x in filteredCondidtions) {
+    //     var filteredData = filtered.filter(Element => (Element.datetime === [x].values))
+    //     console.log(filteredCondidtions)
+    // }
 
 
 

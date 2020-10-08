@@ -44,28 +44,19 @@ function runEnter() {
     var inputValueDate = inputDate.property('value');
 
     // filter data based on elements
+    var filtered = tableData
 
-    var filteredData = tableData.filter(Element => (Element.datetime === inputValueDate)); //Filter just on one element
+    var filteredData = filtered.filter(Element => {
+        return ((Element.datetime === inputValueDate) || (!inputValueDate)) //Filter just on one element
+    })
 
-    // If there is no type selected, return all objects:
-    if (inputValueDate === '') {
-        tableData.forEach((tableData) => {
-            var row = tbody.append("tr");
-            Object.entries(tableData).forEach(([key, value]) => {
-                var cell = row.append("td");
-                cell.text(value);
-            })
+    // Filter data on elements
+    filteredData.forEach((filteredData) => {
+        var row = tbody.append("tr");
+        Object.entries(filteredData).forEach(([key, value]) => {
+            var cell = row.append("td");
+            cell.text(value);
         })
-
-    } else {
-        // Filter data on elements
-        filteredData.forEach((filteredData) => {
-            var row = tbody.append("tr");
-            Object.entries(filteredData).forEach(([key, value]) => {
-                var cell = row.append("td");
-                cell.text(value);
-            })
-        })
-    }
+    })
 
 }
